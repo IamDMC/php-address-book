@@ -1,0 +1,15 @@
+{
+    "name": "iamdmc/php-address-book",
+    "autoload": {
+        "psr-4": {
+            "Iamdmc\\PhpAddressBook\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "IamDMC",
+            "email": "daniel.czosz@gmx.com"
+        }
+    ],
+    "require": {}
+}
