@@ -49,6 +49,23 @@ class ContactController
 
     public function store()
     {
+        $data = [
+            'first_name' => $_POST['first_name'] ?? '',
+            'last_name' => $_POST['last_name'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'phone' => $_POST['phone'] ?? '',
+        ];
+
+        $errors = $this->validate($data);
+
+        if (!empty($errors)) {
+            view('contacts.create', [
+                'errors' => $errors,
+                'layout' => 'app'
+            ]);
+            return;
+        }
+
         $this->repository->create([
             'first_name' => $_POST['first_name'] ?? '',
             'last_name' => $_POST['last_name'] ?? '',
@@ -68,6 +85,26 @@ class ContactController
         if (!$id) {
             header("Location: /");
             exit;
+        }
+
+        $data = [
+            'first_name' => $_POST['first_name'] ?? '',
+            'last_name' => $_POST['last_name'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'phone' => $_POST['phone'] ?? '',
+        ];
+
+        $errors = $this->validate($data);
+
+        if (!empty($errors)) {
+            $contact = $this->repository->find((int)$id);
+
+            view('contacts.edit', [
+                'contact' => $contact,
+                'errors' => $errors,
+                'layout' => 'app'
+            ]);
+            return;
         }
 
         $this->repository->update((int)$id, [
@@ -91,5 +128,24 @@ class ContactController
 
         header("Location: /");
         exit;
+    }
+
+    private function validate(array $data): array
+    {
+        $errors = [];
+
+        if (empty($data['first_name'])) {
+            $errors['first_name'] = 'Vorname ist erforderlich';
+        }
+
+        if (empty($data['last_name'])) {
+            $errors['last_name'] = 'Nachname ist erforderlich';
+        }
+
+        if (!empty($data['email']) && !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'Ungültige Email';
+        }
+
+        return $errors;
     }
 }

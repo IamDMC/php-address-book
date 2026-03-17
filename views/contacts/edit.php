@@ -1,5 +1,13 @@
 <h2>Kontakt bearbeiten</h2>
 
+<?php if (!empty($errors)): ?>
+    <ul style="color:red;">
+        <?php foreach ($errors as $error): ?>
+            <li><?= htmlspecialchars($error) ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
 <form method="POST" action="/contacts/update">
     <input type="hidden" name="id" value="<?= $contact['id'] ?>">
 
