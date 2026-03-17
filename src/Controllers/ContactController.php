@@ -18,13 +18,16 @@ class ContactController
         $contacts = $this->repository->all();
 
         view('contacts.index', [
-            'contacts' => $contacts
+            'contacts' => $contacts,
+            'layout' => 'app'
         ]);
     }
 
     public function create()
     {
-        view('contacts.create');
+        view('contacts.create', [
+            'layout' => 'app'
+        ]);
     }
 
     public function store()
