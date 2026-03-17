@@ -23,6 +23,23 @@ class ContactController
         ]);
     }
 
+    public function edit()
+    {
+        $id = $_GET['id'] ?? null;
+
+        if (!$id) {
+            header("Location: /");
+            exit;
+        }
+
+        $contact = $this->repository->find((int)$id);
+
+        view('contacts.edit', [
+            'contact' => $contact,
+            'layout' => 'app'
+        ]);
+    }
+
     public function create()
     {
         view('contacts.create', [
@@ -40,6 +57,38 @@ class ContactController
         ]);
 
         // redirect to root
+        header("Location: /");
+        exit;
+    }
+
+    public function update()
+    {
+        $id = $_POST['id'] ?? null;
+
+        if (!$id) {
+            header("Location: /");
+            exit;
+        }
+
+        $this->repository->update((int)$id, [
+            'first_name' => $_POST['first_name'] ?? '',
+            'last_name' => $_POST['last_name'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'phone' => $_POST['phone'] ?? '',
+        ]);
+
+        header("Location: /");
+        exit;
+    }
+
+    public function delete()
+    {
+        $id = $_POST['id'] ?? null;
+
+        if ($id) {
+            $this->repository->delete((int)$id);
+        }
+
         header("Location: /");
         exit;
     }

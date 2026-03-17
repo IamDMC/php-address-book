@@ -8,3 +8,7 @@ use Iamdmc\PhpAddressBook\Controllers\ContactController;
 $router->get('/', [ContactController::class, 'index']);
 $router->get('/contacts/create', [ContactController::class, 'create']);
 $router->post('/contacts', [ContactController::class, 'store']);
+
+$router->get('/contacts/edit', [ContactController::class, 'edit']);
+$router->post('/contacts/update', [ContactController::class, 'update']);
+$router->post('/contacts/delete', [ContactController::class, 'delete']);

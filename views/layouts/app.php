@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>PHP Address Book</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>PHP Address Book</title>
+    </head>
+    <body>
 
-<header>
-    <h1>Adressbuch</h1>
-    <hr>
-</header>
+        <header>
+            <h1>Adressbuch</h1>
+            <hr>
+        </header>
 
-<main>
-    <?= $content ?>
-</main>
+        <main>
+            <?= $content ?>
+        </main>
 
-<footer>
-    <hr>
-    <small>&copy; <?= date('Y') ?></small>
-</footer>
+        <footer>
+            <hr>
+        </footer>
 
-</body>
+    </body>
 </html>
