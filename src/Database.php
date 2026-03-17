@@ -2,10 +2,22 @@
 
 namespace Iamdmc\PhpAddressBook;
 
+use PDO;
 class Database
 {
-    public function test()
+    public static function connect()
     {
-        return "Database class loaded";
+        $config = require __DIR__ . '/../config/database.php';
+
+        $dataSource = "mysql:host={$config['host']};dbname={$config['database']};charset=utf8mb4";
+
+        return new PDO(
+            $dataSource,
+            $config['username'],
+            $config['password'],
+            [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            ]
+        );
     }
 }
