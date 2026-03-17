@@ -2,16 +2,12 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Iamdmc\PhpAddressBook\Database;
+define('BASE_PATH', dirname(__DIR__));
 
-try {
+use Iamdmc\PhpAddressBook\Core\Router;
 
-    $db = Database::connect();
+$router = new Router();
 
-    echo "Database connection successful";
+require BASE_PATH . '/routes/web.php';
 
-} catch (PDOException $e) {
-
-    echo "Database connection failed: " . $e->getMessage();
-
-}
+$router->dispatch();
