@@ -17,12 +17,14 @@ class ContactController
     {
         $contacts = $this->repository->all();
 
-        require BASE_PATH . '/views/contacts/index.php';
+        view('contacts.index', [
+            'contacts' => $contacts
+        ]);
     }
 
     public function create()
     {
-        require BASE_PATH . '/views/contacts/create.php';
+        view('contacts.create');
     }
 
     public function store()
