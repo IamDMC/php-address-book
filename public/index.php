@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../src/Core/helpers.php';
 
 define('BASE_PATH', dirname(__DIR__));
 
