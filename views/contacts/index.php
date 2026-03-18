@@ -30,7 +30,7 @@
 
                     <form method="POST" action="/contacts/delete" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $contact['id'] ?>">
-                        <button>Löschen</button>
+                        <button class="delete-btn">Löschen</button>
                     </form>
                 </td>
             </tr>

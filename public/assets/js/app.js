@@ -25,3 +25,11 @@ $(document).ready(function () {
     });
 
 });
+
+$(document).on('click', '.delete-btn', function (e) {
+
+    if (!confirm('Wirklich löschen?')) {
+        e.preventDefault();
+    }
+
+});
