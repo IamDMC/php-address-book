@@ -29,6 +29,13 @@ class Router
             return;
         }
 
+        // CSRF protection for all post requests
+        if ($method === 'POST' && !Csrf::verify()) {
+            http_response_code(403);
+            echo "CSRF validation failed";
+            return;
+        }
+
         [$controller, $method] = $action;
 
         $controllerInstance = new $controller();

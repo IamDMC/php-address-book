@@ -9,6 +9,8 @@
 <?php endif; ?>
 
 <form method="POST" action="/contacts/update">
+    <?= \Iamdmc\PhpAddressBook\Core\Csrf::field() ?>
+
     <input type="hidden" name="id" value="<?= $contact['id'] ?>">
 
     <input name="first_name" value="<?= htmlspecialchars($contact['first_name']) ?>">

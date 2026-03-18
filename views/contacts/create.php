@@ -9,6 +9,8 @@
 <?php endif; ?>
 
 <form method="POST" action="/contacts">
+    <?= \Iamdmc\PhpAddressBook\Core\Csrf::field() ?>
+
     <input name="first_name" placeholder="Vorname">
     <input name="last_name" placeholder="Nachname">
     <input name="email" placeholder="Email">
