@@ -156,9 +156,13 @@ class ContactController
                 <td><?= htmlspecialchars($contact['email']) ?></td>
                 <td><?= htmlspecialchars($contact['phone']) ?></td>
                 <td>
-                    <button class="delete-btn" data-id="<?= $contact['id'] ?>">
-                        Löschen
-                    </button>
+                    <a href="/contacts/edit?id=<?= $contact['id'] ?>">Edit</a>
+
+                    <form method="POST" action="/contacts/delete" style="display:inline;">
+                        <?= \Iamdmc\PhpAddressBook\Core\Csrf::field() ?>
+                        <input type="hidden" name="id" value="<?= $contact['id'] ?>">
+                        <button class="delete-btn">Löschen</button>
+                    </form>
                 </td>
             </tr>
             <?php

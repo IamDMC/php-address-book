@@ -29,6 +29,7 @@
                     <a href="/contacts/edit?id=<?= $contact['id'] ?>">Edit</a>
 
                     <form method="POST" action="/contacts/delete" style="display:inline;">
+                        <?= \Iamdmc\PhpAddressBook\Core\Csrf::field() ?>
                         <input type="hidden" name="id" value="<?= $contact['id'] ?>">
                         <button class="delete-btn">Löschen</button>
                     </form>
