@@ -78,4 +78,22 @@ class ContactRepository
 
         return $stmt->execute(['id' => $id]);
     }
+
+    public function search(string $query): array
+    {
+        $db = Database::connect();
+
+        $stmt = $db->prepare("
+            SELECT * FROM contacts
+            WHERE first_name LIKE :query
+            OR last_name LIKE :query
+            OR email LIKE :query
+        ");
+
+        $stmt->execute([
+            'query' => '%' . $query . '%'
+        ]);
+
+        return $stmt->fetchAll();
+    }
 }
