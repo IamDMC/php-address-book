@@ -130,6 +130,43 @@ class ContactController
         exit;
     }
 
+    public function search()
+    {
+        $query = $_GET['q'] ?? '';
+
+        $contacts = $this->repository->search($query);
+
+        if (empty($contacts)) {
+            echo '<tr><td colspan="5">Keine Kontakte gefunden</td></tr>';
+            return;
+        }
+
+        echo $this->renderTable($contacts);
+    }
+
+    private function renderTable(array $contacts): string
+    {
+        ob_start();
+
+        foreach ($contacts as $contact) {
+            ?>
+            <tr>
+                <td><?= htmlspecialchars($contact['first_name']) ?></td>
+                <td><?= htmlspecialchars($contact['last_name']) ?></td>
+                <td><?= htmlspecialchars($contact['email']) ?></td>
+                <td><?= htmlspecialchars($contact['phone']) ?></td>
+                <td>
+                    <button class="delete-btn" data-id="<?= $contact['id'] ?>">
+                        Löschen
+                    </button>
+                </td>
+            </tr>
+            <?php
+        }
+
+        return ob_get_clean();
+    }
+
     private function validate(array $data): array
     {
         $errors = [];
