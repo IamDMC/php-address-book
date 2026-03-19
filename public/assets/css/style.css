@@ -1,0 +1,109 @@
+/* Reset + Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #333;
+}
+
+/* Layout */
+header, footer {
+    padding: 20px;
+    background: #1e293b;
+    color: white;
+}
+
+main {
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Headings */
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button, a.button {
+    background: #3b82f6;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover, a.button:hover {
+    background: #2563eb;
+}
+
+.delete-btn {
+    background: #ef4444;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+}
+
+/* Inputs */
+input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Forms */
+form {
+    max-width: 400px;
+}
+
+/* Error */
+ul.error {
+    color: #ef4444;
+    margin-bottom: 15px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background: #1e293b;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background: #f1f5f9;
+}
+
+/* Search */
+#search {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

@@ -156,7 +156,7 @@ class ContactController
                 <td><?= htmlspecialchars($contact['email']) ?></td>
                 <td><?= htmlspecialchars($contact['phone']) ?></td>
                 <td>
-                    <a href="/contacts/edit?id=<?= $contact['id'] ?>">Edit</a>
+                    <a href="/contacts/edit?id=<?= $contact['id'] ?>" class="button">Edit</a>
 
                     <form method="POST" action="/contacts/delete" style="display:inline;">
                         <?= \Iamdmc\PhpAddressBook\Core\Csrf::field() ?>
